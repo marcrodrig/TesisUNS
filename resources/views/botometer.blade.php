@@ -3,13 +3,13 @@
 @section('title', 'Puntaje Botometer')
 
 @section('styles')
-<link href="{{ asset('/css/puntosSuspensivos.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ secure_asset('/css/puntosSuspensivos.css') }}" rel="stylesheet" type="text/css" />
 @stop
 
 @section('content')
 <h2 class="text-center">Clasificación Botometer</h2>
 <div class="d-flex justify-content-center">
-	<form action=" {{ url('clasificacion/botometer') }}" method="POST" onsubmit="spinnerBotometerAjax()">
+	<form action=" {{ secure_url('clasificacion/botometer') }}" method="POST" onsubmit="spinnerBotometerAjax()">
 		@csrf
 		<div class="form-row align-items-center">
 			<div class="col my-1">
@@ -30,7 +30,7 @@
 </div>
 <div class="d-flex justify-content-center">
 	<div id="spinnerBotometer" style="display: none;">
-		<img id="imgSpinnerTesis" src={{ asset('/img/spinner.gif') }} alt="Cargando" style="display: block" />
+		<img id="imgSpinnerTesis" src={{ secure_asset('/img/spinner.gif') }} alt="Cargando" style="display: block" />
 		<div class="text-center">Obteniendo puntaje Botometer.</div>
 		<p class="text-center">Puede tardar unos segundos
 			<span class="dot-one">.</span>
