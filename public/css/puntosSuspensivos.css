@@ -1,0 +1,62 @@
+.dot-one{
+  animation-name: flashOne;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes flashOne {
+  0%{
+    opacity: 0
+  }
+  25%{
+    opacity:1
+  }
+  50%{
+    opacity: 1
+  }
+  100%{
+    opacity: 1
+  }
+}
+
+.dot-two{
+  animation-name: flashTwo;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes flashTwo{
+  0%{
+    opacity: 0
+  }
+  25%{
+    opacity: 0
+  }
+  50%{
+    opacity: 1
+  }
+  100%{
+    opacity: 1
+  }
+}
+
+.dot-three{
+  animation-name: flashThree;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes flashThree{
+  0%{
+    opacity: 0
+  }
+  50%{
+    opacity: 0
+  }
+  75%{
+    opacity: 1
+  }
+  100%{
+    opacity: 1
+  }
+}
