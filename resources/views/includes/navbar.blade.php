@@ -8,7 +8,7 @@
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link p-2" href="https://github.com/..." target="_blank"><i class="fab fa-fw fa-github"></i> </a>
+                <a class="nav-link p-2" href="https://github.com/marcrodrig/TesisUNS" target="_blank"><i class="fab fa-fw fa-github"></i> </a>
             </li>
         </ul>
     </div>
