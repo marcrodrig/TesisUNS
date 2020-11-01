@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6f758d216522a905c8ec4d213cf7e0dd",
+    "content-hash": "4d9c92dc20bb5b20ed0677cc86279909",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -983,16 +983,16 @@
         },
         {
             "name": "ericmuigai/botometer-php",
-            "version": "v1.0.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ericmuigai/botometer-php.git",
-                "reference": "36148b13f57103c609cf8242226bc5585ad08709"
+                "reference": "fb6ed7b0ea093cfd5f92a7cb5bc4194a094e4134"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ericmuigai/botometer-php/zipball/36148b13f57103c609cf8242226bc5585ad08709",
-                "reference": "36148b13f57103c609cf8242226bc5585ad08709",
+                "url": "https://api.github.com/repos/ericmuigai/botometer-php/zipball/fb6ed7b0ea093cfd5f92a7cb5bc4194a094e4134",
+                "reference": "fb6ed7b0ea093cfd5f92a7cb5bc4194a094e4134",
                 "shasum": ""
             },
             "require": {
@@ -1016,7 +1016,7 @@
                 }
             ],
             "description": "A PHP API for Botometer by OSoMe.",
-            "time": "2020-06-10T07:00:16+00:00"
+            "time": "2020-10-16T12:20:45+00:00"
         },
         {
             "name": "fideloper/proxy",
@@ -5754,16 +5754,16 @@
         },
         {
             "name": "filp/whoops",
-            "version": "2.9.0",
+            "version": "2.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filp/whoops.git",
-                "reference": "2ec31f3adc54c71a59c5e3c2143d7a0e2f8899f8"
+                "reference": "307fb34a5ab697461ec4c9db865b20ff2fd40771"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filp/whoops/zipball/2ec31f3adc54c71a59c5e3c2143d7a0e2f8899f8",
-                "reference": "2ec31f3adc54c71a59c5e3c2143d7a0e2f8899f8",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/307fb34a5ab697461ec4c9db865b20ff2fd40771",
+                "reference": "307fb34a5ab697461ec4c9db865b20ff2fd40771",
                 "shasum": ""
             },
             "require": {
@@ -5811,7 +5811,7 @@
                 "throwable",
                 "whoops"
             ],
-            "time": "2020-10-20T12:00:00+00:00"
+            "time": "2020-11-01T12:00:00+00:00"
         },
         {
             "name": "hamcrest/hamcrest-php",
@@ -7827,12 +7827,13 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "ericmuigai/botometer-php": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.3|^8.0",
-        "ext-igbinary": "*"
+        "php": "^7.3|^8.0"
     },
     "platform-dev": [],
     "plugin-api-version": "1.1.0"
