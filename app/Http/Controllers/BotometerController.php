@@ -19,11 +19,11 @@ class BotometerController extends Controller
 
         $username = $request->input('username');
 
-        $consumerKey = $_ENV['TWITTER_CONSUMER_KEY'];
-        $consumerSecret = $_ENV['TWITTER_CONSUMER_SECRET'];
-        $accessToken = $_ENV['TWITTER_ACCESS_TOKEN'];
-        $accessTokenSecret = $_ENV['TWITTER_ACCESS_TOKEN_SECRET'];
-        $rapidApiKey = $_ENV['RAPID_KEY'];
+        $consumerKey = env('TWITTER_CONSUMER_KEY');
+        $consumerSecret = env('TWITTER_CONSUMER_SECRET');
+        $accessToken = env('TWITTER_ACCESS_TOKEN');
+        $accessTokenSecret = env('TWITTER_ACCESS_TOKEN_SECRET');
+        $rapidApiKey = env('RAPID_KEY');
 
         $botometer = new Botometer($consumerKey, $consumerSecret, $accessToken, $accessTokenSecret, $rapidApiKey);
     
@@ -36,9 +36,8 @@ class BotometerController extends Controller
             $scores = json_encode($objJSON->display_scores->universal);
 
       	$request->session()->flash('display_scores', json_decode($scores, true));
-   $display_scores = json_decode($scores, true);
-          return redirect('/clasificacion/botometer/'.$username)->with('display_scores', json_decode($scores, true));
-        //  return view('puntajeBotometer')
+        $display_scores = json_decode($scores, true);
+        return redirect('/clasificacion/botometer/'.$username)->with('display_scores', json_decode($scores, true));
     }
 
     public function resultado(Request $request, $username) {
