@@ -16,7 +16,8 @@
         "j7mbo/twitter-api-php": "^1.0",
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
-        "rubix/ml": "^0.2.3"
+        "rubix/ml": "^0.2.3",
+        "ext-igbinary": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
