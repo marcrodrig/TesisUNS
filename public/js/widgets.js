@@ -12,11 +12,14 @@ if (widgets.style.visibility === "hidden") {
                 }
             ); 
 			// Primer Tweet
-            axios.get('widgetTweet/'+ 0)
+            axios.get('widgets')
             .then(function (response) {
-                var target=itemsCarousel[0];
-                target.innerHTML=response.data.html;
-                twttr.widgets.load(target);
+				var widgetsTweets = response.data;
+				for (var index = 0; index < widgetsTweets.length; index++) {
+					var target=itemsCarousel[index];
+                	target.innerHTML=widgetsTweets[index].html;
+				}
+                twttr.widgets.load(widgets);
             })
             .catch(function (error) {
                 // handle error
@@ -26,42 +29,10 @@ if (widgets.style.visibility === "hidden") {
   	);
 }
 
-function showSpinnerTweets() {
-	//console.log('show spinner');
-	spinnerTweets.style.display = "block";
-}
-
 function hideSpinnerTweets() {
 	//console.log('hide spinner');
 	spinnerTweets.style.display = "none";
 }
-
-$('.carousel').on('slide.bs.carousel', function (event) {
-	var target=itemsCarousel[event.to];
-	if ($(target).is(':empty')) {
-		//console.log('vacio');
-		axios.get('widgetTweet/'+event.to)
-			.then(function (response) {        
-				target.innerHTML=response.data.html;
-				twttr.widgets.load(target);
-			})
-			.catch(function (error) {
-				// handle error
-				console.log(error);
-			}
-		);
-	} 
-	else
-		hideSpinnerTweets();
-});
-
-$('.carousel').on('slid.bs.carousel', function (event) {
-	var target=itemsCarousel[event.to];
-	if ($(target).is(':empty')) {
-		showSpinnerTweets();
-		widgets.style.visibility = "hidden";
-	}
-});
 
 $('.carousel').carousel('pause');
 

@@ -46,7 +46,7 @@
 @stop
 
 @section('scripts')
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script type="text/javascript" src="{{ asset('js/widgetTwitter.js') }}"></script>
 <script type="text/javascript">
 	function spinnerPrediccion() {
