@@ -5,7 +5,6 @@
 @section('styles')
 <link href="{{ asset('/css/modalWidgets.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ asset('/css/puntosSuspensivos.css') }}" rel="stylesheet" type="text/css" />
-<link href="{{ asset('/css/flickity.css') }}" rel="stylesheet" type="text/css" />
 @stop
 
 @section('content')
@@ -58,14 +57,6 @@
   	}
 </script>
 @isset($predicciones)
-<script type="text/javascript" src="{{ asset('js/flickity.pkgd.min.js') }}"></script>
-<script>
-$('.main-carousel').flickity({
-	// options
-	cellAlign: 'left',
-	contain: true
-  });
-</script>
 <script type="text/javascript" src="{{ asset('js/widgets.js') }}"></script>
 @endisset
 @stop
