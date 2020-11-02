@@ -8,7 +8,6 @@ use App\Models\Metrica;
 use Carbon\Carbon;
 use Rubix\ML\Datasets\Labeled;
 use Rubix\ML\Persisters\Filesystem;
-use Rubix\ML\Persisters\Serializers\Igbinary;
 
 class DetectorController extends Controller
 {
@@ -91,7 +90,6 @@ class DetectorController extends Controller
         if($user['protected']) {
             $errors['protected'] = 'El usuario '.$username.' tiene la cuenta protegida';
             return view('clasificacion',compact('username'))->withErrors($errors);
-            // ->withInput()??
         }
 
         # Extracción de características para la predicción
@@ -218,17 +216,17 @@ class DetectorController extends Controller
         // Obtengo el clasificador entrenado inicialmente y los entreno con
         // los datos restante de la base de datos.
         // Luego, se predice el username requerido
-        $persister = new Filesystem(public_path().'/model/knn_entrenamiento_inicial.model', false, new Igbinary());
+        $persister = new Filesystem(public_path().'/model/knn_entrenamiento_inicial.model', false);
         $estimatorKNN = $persister->load();
         if($datasetRestante->numRows() > 0)
             $estimatorKNN->partial($datasetRestante);
 
-        $persister = new Filesystem(public_path().'/model/gnb_entrenamiento_inicial.model', false, new Igbinary());
+        $persister = new Filesystem(public_path().'/model/gnb_entrenamiento_inicial.model', false);
         $estimatorGNB = $persister->load();
         if($datasetRestante->numRows() > 0)
 			$estimatorGNB->partial($datasetRestante);
 			
-        $persister = new Filesystem(public_path().'/model/rf_entrenamiento_inicial.model', false, new Igbinary());
+        $persister = new Filesystem(public_path().'/model/rf_entrenamiento_inicial.model', false);
         $estimatorRF = $persister->load();
         $estimatorRF->train($datasetEntero);
         

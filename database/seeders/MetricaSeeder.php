@@ -15,7 +15,6 @@ use Rubix\ML\Classifiers\RandomForest;
 use Rubix\ML\CrossValidation\Metrics\FBeta;
 use Rubix\ML\PersistentModel;
 use Rubix\ML\Persisters\Filesystem;
-use Rubix\ML\Persisters\Serializers\Igbinary;
 use Illuminate\Support\Facades\DB;
 
 class MetricaSeeder extends Seeder
@@ -97,7 +96,7 @@ class MetricaSeeder extends Seeder
         [$training, $testing] = $dataset->randomize()->split(0.8);
 
         # K vecinos más cercanos
-        $persister = new Filesystem(public_path().'/model/knn_entrenamiento_inicial.model', false, new Igbinary());
+        $persister = new Filesystem(public_path().'/model/knn_entrenamiento_inicial.model', false);
         
         $estimatorKNN = new KNearestNeighbors(3,true, new Manhattan());
         $estimatorKNN->train($training);
@@ -113,7 +112,7 @@ class MetricaSeeder extends Seeder
         $precisiones['knn'] = $score;
 
         # Naïve Bayes Gaussiano
-        $persister = new Filesystem(public_path().'/model/gnb_entrenamiento_inicial.model', false, new Igbinary());
+        $persister = new Filesystem(public_path().'/model/gnb_entrenamiento_inicial.model', false);
 
         $estimatorGNB = new GaussianNB();
         $estimatorGNB->train($training);
@@ -127,7 +126,7 @@ class MetricaSeeder extends Seeder
         $precisiones['gnb'] = $score;
 
         # Bosque aleatorio
-        $persister = new Filesystem(public_path().'/model/rf_entrenamiento_inicial.model', false, new Igbinary());
+        $persister = new Filesystem(public_path().'/model/rf_entrenamiento_inicial.model', false);
 
         $estimatorRF = new RandomForest();
         $estimatorRF->train($training);

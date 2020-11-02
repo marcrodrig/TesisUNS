@@ -3,13 +3,15 @@
 @section('title', 'Puntaje Botometer')
 
 @section('styles')
-<link href="{{ secure_asset('/css/puntosSuspensivos.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('/css/puntosSuspensivos.css') }}" rel="stylesheet" type="text/css" />
 @stop
 
 @section('content')
 <h2 class="text-center">Clasificación Botometer</h2>
+<p><a target="_blank" href="https://botometer.osome.iu.edu/"><i>Botometer</i></a> (anteriormente BotOrNot) verifica la actividad de una cuenta de Twitter y le da una puntuación. Los puntajes más altos significan una actividad más similar a un bot.</p>
 <div class="d-flex justify-content-center">
-	<form action=" {{ secure_url('clasificacion/botometer') }}" method="POST" onsubmit="spinnerBotometerAjax()">
+	
+	<form action=" {{ url('clasificacion/botometer') }}" method="POST" onsubmit="spinnerBotometerAjax()">
 		@csrf
 		<div class="form-row align-items-center">
 			<div class="col my-1">
@@ -19,7 +21,7 @@
 						<div class="input-group-text">@</div>
 					</div>
 					<input type="text" class="form-control" name="username" id="username" value="{{ $username ?? '' }}"
-						placeholder="Nombre de usuario" required>
+						placeholder="Nombre de usuario" autocomplete="off" required>
 				</div>
 			</div>
 			<div class="col-auto my-1">
@@ -30,7 +32,7 @@
 </div>
 <div class="d-flex justify-content-center">
 	<div id="spinnerBotometer" style="display: none;">
-		<img id="imgSpinnerTesis" src={{ secure_asset('/img/spinner.gif') }} alt="Cargando" style="display: block" />
+		<img id="imgSpinnerTesis" src={{ asset('/img/spinner.gif') }} alt="Cargando" style="display: block" />
 		<div class="text-center">Obteniendo puntaje Botometer.</div>
 		<p class="text-center">Puede tardar unos segundos
 			<span class="dot-one">.</span>

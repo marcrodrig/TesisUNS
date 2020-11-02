@@ -1,3 +1,27 @@
 .modal-body {
   background-color: #212529 ; 
 }
+
+
+#carousel {
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.carousel-control-prev {
+  margin-left: -45px;
+}
+
+.carousel-control-next {
+  margin-right: -45px;
+}
+
+.carousel-indicators {
+  margin-bottom: -20px;
+  margin-right: 0%;
+  margin-left: 0%;
+}
+
+.carousel-indicators li {
+  background-color: yellow;
+}
