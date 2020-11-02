@@ -14,7 +14,7 @@ if (widgets.style.visibility === "hidden") {
                 }
             ); 
 			// Primeros 10 Tweets
-            axios.get('widgets1/')
+            axios.get('https://tesis-uns.herokuapp.com/widgets1')
             .then(function (response) {
                 var widgetsTweets = response.data;
 				for (var index = 0; index < widgetsTweets.length; index++) {
@@ -49,7 +49,7 @@ $('.carousel').on('slide.bs.carousel', function (event) {
 	if ($(target).is(':empty')) {
         if (event.to >=10 && event.to <= 19 && !segundaSeccionTweets) {
             segundaSeccionTweets = true;
-            axios.get('widgets2/')
+            axios.get('https://tesis-uns.herokuapp.com/widgets2')
             .then(function (response) {
                 var widgetsTweets = response.data;
 				for (var index = 0; index < widgetsTweets.length; index++) {
@@ -65,7 +65,7 @@ $('.carousel').on('slide.bs.carousel', function (event) {
         }
         if (event.to >=20 && event.to <= 29 && !terceraSeccionTweets) {
             terceraSeccionTweets = true;
-            axios.get('widgets3/')
+            axios.get('https://tesis-uns.herokuapp.com/widgets3')
             .then(function (response) {
                 var widgetsTweets = response.data;
 				for (var index = 0; index < widgetsTweets.length; index++) {
