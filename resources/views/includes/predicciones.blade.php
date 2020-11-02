@@ -47,9 +47,9 @@
 						<div class="carousel-inner">
 							@for ($index=0; $index<$cantidadTweetsPrediccion; $index++)
 								@if ($index==0)
-									<div class="carousel-item active" data-interval="false"></div>
+									<div class="carousel-item active"></div>
 								@else
-									<div class="carousel-item" data-interval="false"></div>
+									<div class="carousel-item"></div>
 								@endif
 							@endfor
 						</div>

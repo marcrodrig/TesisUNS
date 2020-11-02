@@ -30,4 +30,6 @@ Route::get('/clasificacion/botometer', [BotometerController::class,'index'])->na
 Route::post('/clasificacion/botometer', [BotometerController::class,'botometer']);
 Route::get('/clasificacion/botometer/{username}', [BotometerController::class,'resultado'])->name('resultadoBotometer');
 
-Route::get('/widgets', [WidgetController::class,'widgetTweet']);
+Route::get('/widgets1', [WidgetController::class,'widgetTweetSeccion1']);
+Route::get('/widgets2', [WidgetController::class,'widgetTweetSeccion2']);
+Route::get('/widgets3', [WidgetController::class,'widgetTweetSeccion3']);
