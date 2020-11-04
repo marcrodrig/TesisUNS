@@ -24,7 +24,7 @@
 							<p class="text-justify">Twitter API (Tweepy): recolectados 2.500 usuarios verificados de los
 								cuales se obtuvieron 75.000 tweets.</p>
 						</td>
-						<td>Dimensión: (75000, 19)<br>Características: 18<br>Target: 1 (bot)<br></td>
+						<td>Dimensión: (75000, 19)<br>Variables: 19</td>
 					</tr>
 					<tr>
 						<td>Bots</td>
@@ -34,7 +34,7 @@
 								<a target="_blank" href="https://botometer.iuni.iu.edu/bot-repository/datasets.html">botometer.iuni.iu.edu/bot-repository/datasets.html</a>,
 								de los cuales se obtuvieron 26.800 tweets.</p>
 						</td>
-						<td>Dimensión: (26800, 19)<br>Características: 18<br>Target: 1 (bot)<br></td>
+						<td>Dimensión: (26800, 19)<br>Variables: 19</td>
 					</tr>
 					<tr>
 						<td>Total</td>
