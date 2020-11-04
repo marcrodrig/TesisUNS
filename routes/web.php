@@ -24,7 +24,8 @@ Route::get('/', function () {
 Route::get('/datos', [DatasetController::class,'index'])->name('data');
 
 Route::get('/clasificacion/detector', [DetectorController::class,'index'])->name('clasificacion');
-Route::post('/clasificacion', [DetectorController::class,'check']);
+Route::post('/clasificacion/detector/', [DetectorController::class,'check']);
+Route::get('/clasificacion/detector/{username}', [DetectorController::class,'resultado']);
 
 Route::get('/clasificacion/botometer', [BotometerController::class,'index'])->name('botometer');
 Route::post('/clasificacion/botometer', [BotometerController::class,'botometer']);

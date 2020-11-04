@@ -9,9 +9,10 @@
 
 @section('content')
 <div class="container">
-	<h2 class="text-center">Clasificación</h2>
+	<h2 class="text-center">Detector Bot</h2>
+	<h5 class="card-subtitle text-center mb-1 text-muted">Ingrese el nombre de usuario para realizar la clasificación:</h5>
 	<div class="d-flex justify-content-center">
-		<form action=" {{ url('clasificacion') }}" method="POST" onsubmit="spinnerPrediccion()">
+		<form action=" {{ url('clasificacion/detector') }}" method="POST" onsubmit="spinnerPrediccion()">
 		@csrf
 			<div class="form-row align-items-center">
 				<div class="col my-1">
@@ -29,6 +30,11 @@
 			</div>
 		</form>
 	</div>
+	@empty($predicciones)
+		<div class="text-center mt-3">
+			<img src="{{asset('img/bothuman.jpg')}}" id="imgBotHuman" class="rounded w-50" alt="bothuman">
+		</div>
+	@endempty
 	<div class="d-flex justify-content-center">
 		<div id="spinnerPrediccion" style="display: none;">
 			<img id="imgSpinnerTesis" src={{ asset('/img/spinner.gif') }} alt="Cargando" style="display: block" />
@@ -53,7 +59,10 @@
 		let cardPrediccion = document.getElementById("prediccion");
     	if (cardPrediccion !== null)
       		cardPrediccion.style.display = "none";
-      	document.getElementById("spinnerPrediccion").style.display = "block";
+		document.getElementById("spinnerPrediccion").style.display = "block";
+		let img = document.getElementById("imgBotHuman");
+		if (img !== null)
+			document.getElementById("imgBotHuman").style.display = "none";
   	}
 </script>
 @isset($predicciones)

@@ -25,8 +25,33 @@ class BotometerController extends Controller
         $accessTokenSecret = env('TWITTER_ACCESS_TOKEN_SECRET');
         $rapidApiKey = env('RAPID_KEY');
 
+        // Chequeo si el usuario existe o no tiene tweets
+        $settings = array(
+            'oauth_access_token' => $accessToken,
+            'oauth_access_token_secret' => $accessTokenSecret,
+            'consumer_key' => $consumerKey,
+            'consumer_secret' => $consumerSecret
+        );
+        $url = 'https://api.twitter.com/1.1/users/show.json';
+        $getfield = '?screen_name='.$username;        
+        $requestMethod = 'GET';
+        $twitter = new \TwitterAPIExchange($settings);
+        $json =  $twitter->setGetfield($getfield)
+                     ->buildOauth($url, $requestMethod)
+                     ->performRequest();
+        $resultadoJSON = json_decode($json, true);
+        if(array_key_exists('errors', $resultadoJSON)) {
+            if($resultadoJSON['errors'][0]['code'] == 50) {
+                $errors['undefined'] = 'El usuario '.$username.' no existe.';
+                return view('botometer',compact('username'))->withErrors($errors);
+            }
+        }
+        if($resultadoJSON['statuses_count'] == 0) {
+            $errors['undefined'] = 'El usuario '.$username.' no tiene tweets.';
+            return view('botometer',compact('username'))->withErrors($errors);
+        }
+
         $botometer = new Botometer($consumerKey, $consumerSecret, $accessToken, $accessTokenSecret, $rapidApiKey);
-    
         // Check a single account by screen name
         $resultadoJSON = $botometer->checkAccount( '@'.$username );
         $objJSON = json_decode($resultadoJSON); 
@@ -34,9 +59,6 @@ class BotometerController extends Controller
             $scores = json_encode($objJSON->display_scores->english);
         else
             $scores = json_encode($objJSON->display_scores->universal);
-
-      	$request->session()->flash('display_scores', json_decode($scores, true));
-        $display_scores = json_decode($scores, true);
         return redirect('/clasificacion/botometer/'.$username)->with('display_scores', json_decode($scores, true));
     }
 

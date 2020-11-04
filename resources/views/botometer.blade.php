@@ -10,7 +10,6 @@
 <h2 class="text-center">Clasificación Botometer</h2>
 <p><a target="_blank" href="https://botometer.osome.iu.edu/"><i>Botometer</i></a> (anteriormente BotOrNot) verifica la actividad de una cuenta de Twitter y le da una puntuación. Los puntajes más altos significan una actividad más similar a un bot.</p>
 <div class="d-flex justify-content-center">
-	
 	<form action=" {{ url('clasificacion/botometer') }}" method="POST" onsubmit="spinnerBotometerAjax()">
 		@csrf
 		<div class="form-row align-items-center">

@@ -2,16 +2,11 @@
 
 @section('scores')
 <div class="card" id="puntajeBotometer">
-	<div class="card-header">
-		<h5>Puntaje Botometer</h5>
-	</div>
-	<div class="card-body">
-		<button type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#modalReferencias">
-			Tipos de puntaje
-		</button>
+	<div class="card-header text-center font-weight-bold">Puntaje Botometer</div>
+	<div class="card-body text-center">
 		@php $rating = $display_scores['overall']; @endphp
-		<h5 class="card-title">Puntaje general</h5>
-		<p>
+		<h4 class="card-title mb-0">General</h4>
+		<p class="h3">
 			@include('includes.stars')
 			{{ '('.$rating.')' }}
 		</p>
@@ -35,6 +30,11 @@
 				{{ '('.$rating.')' }}
 			@endif
 		@endforeach
+	</div>
+	<div class="card-footer text-center">
+		<button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalReferencias">
+			Tipos de puntaje
+		</button>
 	</div>
 </div>
 

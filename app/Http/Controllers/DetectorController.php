@@ -36,8 +36,20 @@ class DetectorController extends Controller
                      ->buildOauth($url, $requestMethod)
                      ->performRequest();
         $tweetsPrediccion = json_decode($json, true);
-
+        if (array_key_exists('errors', $tweetsPrediccion)) {
+            $primerError = $tweetsPrediccion['errors'][0];
+            if ($primerError['code'] == 34) {
+                $errors['undefined'] = 'El usuario '.$username.' no existe.';
+                return view('clasificacion',compact('username'))->withErrors($errors);
+            }
+            else
+                return view('clasificacion',compact('username'))->withErrors($primerError['message']);
+        }
         $cantidadTweetsPrediccion = count($tweetsPrediccion);
+        if ($cantidadTweetsPrediccion == 0) {
+            $errors['undefined'] = 'No se puede predecir, el usuario '.$username.' no tiene tweets.';
+            return view('clasificacion',compact('username'))->withErrors($errors);
+        }
         $predictData = [];
         $hashtagTotalCount = 0;
         $mentionTotalCount = 0;
@@ -46,7 +58,6 @@ class DetectorController extends Controller
         $httpTotalCount = 0;
         $listaTweetID = [];
         foreach($tweetsPrediccion as $tweet) {
-            //dd($tweet);
             $data['TweetID'] = $tweet['id'];
             $data['TextData'] = $tweet['full_text'];
             $data['TweetCreatedAt'] = $tweet['created_at'];
@@ -88,7 +99,7 @@ class DetectorController extends Controller
         }
 
         if($user['protected']) {
-            $errors['protected'] = 'El usuario '.$username.' tiene la cuenta protegida';
+            $errors['protected'] = 'El usuario '.$username.' tiene la cuenta protegida.';
             return view('clasificacion',compact('username'))->withErrors($errors);
         }
 
@@ -264,6 +275,14 @@ class DetectorController extends Controller
  
         session(['listaTweetID' => $listaTweetID]);
 
-        return view('clasificacion', compact('username', 'metricas','predicciones','cantidadTweetsPrediccion'));
+        return redirect('/clasificacion/detector/'.$username)->with('metricas', $metricas)->with('predicciones', $predicciones)->with('cantidadTweetsPrediccion', $cantidadTweetsPrediccion);
     }
+
+    public function resultado(Request $request, $username) {
+        $metricas = $request->session()->get('metricas');
+        $predicciones = $request->session()->get('predicciones');
+        $cantidadTweetsPrediccion = $request->session()->get('cantidadTweetsPrediccion');
+		return view('clasificacion', compact('username', 'metricas','predicciones','cantidadTweetsPrediccion'));
+    }
+
 }
